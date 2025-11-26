@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Streamlit Input Components Best Practices for Customer Churn Prediction - My Docs</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">My Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Welcome to MkDocs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../api/" class="nav-link">Application Programming Interface</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Streamlit Input Components Best Practices for Customer Churn Prediction</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../api/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#streamlit-input-components-best-practices-for-customer-churn-prediction" class="nav-link">Streamlit Input Components Best Practices for Customer Churn Prediction</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#executive-summary" class="nav-link">Executive Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-input-widgets-by-data-type" class="nav-link">1. Input Widgets by Data Type</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-form-patterns-individual-vs-grouped-inputs" class="nav-link">2. Form Patterns: Individual vs. Grouped Inputs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-recommended-component-mapping-for-telco-churn-data" class="nav-link">3. Recommended Component Mapping for Telco Churn Data</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-layout-patterns-for-business-dashboards" class="nav-link">4. Layout Patterns for Business Dashboards</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-input-validation-error-handling" class="nav-link">5. Input Validation &amp; Error Handling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-mobile-accessibility-considerations" class="nav-link">6. Mobile &amp; Accessibility Considerations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#7-performance-optimization" class="nav-link">7. Performance Optimization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#8-recommended-implementation-for-your-dashboard" class="nav-link">8. Recommended Implementation for Your Dashboard</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#9-summary-table-component-recommendations" class="nav-link">9. Summary Table: Component Recommendations</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#10-key-takeaways-for-your-dashboard" class="nav-link">10. Key Takeaways for Your Dashboard</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="streamlit-input-components-best-practices-for-customer-churn-prediction">Streamlit Input Components Best Practices for Customer Churn Prediction</h1>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>For a customer churn prediction dashboard, the optimal approach combines <strong>semantic clarity</strong> (using component types that match the data type), <strong>cognitive load reduction</strong> (grouping related inputs), and <strong>business context</strong> (making predictions feel immediate and reliable).</p>
+<hr />
+<h2 id="1-input-widgets-by-data-type">1. Input Widgets by Data Type</h2>
+<h3 id="a-continuous-numeric-data-tenure-charges">A. Continuous Numeric Data (Tenure, Charges)</h3>
+<h4 id="recommended-stslider-for-bounded-ranges">✅ <strong>RECOMMENDED: <code>st.slider()</code> for bounded ranges</strong></h4>
+<pre><code class="language-python">tenure = st.slider(
+    &quot;Tenure (months)&quot;,
+    min_value=0,
+    max_value=72,
+    value=24,
+    step=1,
+    help=&quot;Years with company (0-6 years)&quot;
+)
+</code></pre>
+<p><strong>Advantages for business dashboards:</strong>
+- <strong>Visual feedback</strong>: Users see the range context immediately
+- <strong>Prevents outliers</strong>: Hard boundaries prevent invalid inputs
+- <strong>Exploration friendly</strong>: Dragging encourages "what-if" scenarios
+- <strong>Mobile-friendly</strong>: Touch-friendly on tablets used by support teams</p>
+<p><strong>Trade-offs:</strong>
+- Poor for entering precise values (hard to hit exact number)
+- Takes more screen space
+- For tenure, 72-month maximum is realistic business constraint</p>
+<h4 id="alternative-stnumber_input-when-precision-matters">🟡 <strong>ALTERNATIVE: <code>st.number_input()</code> when precision matters</strong></h4>
+<pre><code class="language-python">monthly_charges = st.number_input(
+    &quot;Monthly Charges ($)&quot;,
+    min_value=0.0,
+    max_value=120.0,
+    step=0.01,
+    value=50.0,
+    format=&quot;$%.2f&quot;
+)
+</code></pre>
+<p><strong>When to use:</strong>
+- Customer services with precise billing (e.g., $65.43)
+- When users know exact value and entering is faster than sliding
+- For data import workflows</p>
+<p><strong>Disadvantages for churn prediction:</strong>
+- Less intuitive for exploratory "what-if" analysis
+- Doesn't communicate range constraints visually
+- Higher cognitive load to understand valid ranges</p>
+<hr />
+<h3 id="b-booleanservice-status-data-tech-support-online-security-etc">B. Boolean/Service Status Data (Tech Support, Online Security, etc.)</h3>
+<h4 id="recommended-sttoggle-for-single-binary-service">✅ <strong>RECOMMENDED: <code>st.toggle()</code> for single binary service</strong></h4>
+<pre><code class="language-python">tech_support = st.toggle(
+    &quot;Tech Support Active&quot;,
+    value=False,
+    help=&quot;Customer has tech support subscription&quot;
+)
+</code></pre>
+<p><strong>Advantages:</strong>
+- <strong>Immediate visual state</strong>: ON/OFF is crystal clear
+- <strong>Accessibility</strong>: Larger touch target than checkbox
+- <strong>Modern UX</strong>: Matches contemporary app patterns
+- <strong>Clean visual</strong>: Minimal screen clutter</p>
+<p><strong>When to use:</strong>
+- Individual service toggles
+- Admin dashboards where on/off is primary concern
+- Forms with one boolean per row</p>
+<h4 id="acceptable-stcheckbox-for-multiple-services">🟡 <strong>ACCEPTABLE: <code>st.checkbox()</code> for multiple services</strong></h4>
+<pre><code class="language-python">tech_support = st.checkbox(&quot;Tech Support&quot;, value=False)
+online_security = st.checkbox(&quot;Online Security&quot;, value=True)
+phone_service = st.checkbox(&quot;Phone Service&quot;, value=False)
+</code></pre>
+<p><strong>Advantages:</strong>
+- Traditional, universally understood
+- Good for multiple related booleans in close proximity
+- Works well in compact layouts</p>
+<p><strong>Disadvantages:</strong>
+- Smaller visual state indicator than toggle
+- Feels dated in modern dashboards
+- Checkboxes grouped vertically can feel cluttered</p>
+<h4 id="recommended-for-service-categories-stselect_slider-or-custom-layout">✅ <strong>RECOMMENDED for service categories: <code>st.select_slider()</code> or custom layout</strong></h4>
+<pre><code class="language-python"># Better: Present as readable service group
+with st.container(border=True):
+    st.subheader(&quot;📱 Services&quot;)
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        tech_support = st.toggle(&quot;Tech Support&quot;)
+    with col2:
+        online_security = st.toggle(&quot;Online Security&quot;)
+    with col3:
+        phone_service = st.toggle(&quot;Phone Service&quot;)
+</code></pre>
+<p><strong>Why:</strong>
+- Visual grouping creates semantic meaning
+- Border/container distinguishes service section
+- Emoji + text provides business context
+- Horizontal layout reduces vertical scrolling</p>
+<hr />
+<h3 id="c-categorical-data-contract-type-internet-service-etc">C. Categorical Data (Contract Type, Internet Service, etc.)</h3>
+<h4 id="recommended-stselectbox-for-3-6-options">✅ <strong>RECOMMENDED: <code>st.selectbox()</code> for 3-6 options</strong></h4>
+<pre><code class="language-python">contract_type = st.selectbox(
+    &quot;Contract Type&quot;,
+    options=[&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;],
+    help=&quot;Current contract duration&quot;
+)
+</code></pre>
+<p><strong>Advantages:</strong>
+- <strong>Compact</strong>: Only shows selected value until clicked
+- <strong>Mobile-friendly</strong>: Dropdown is touch-friendly
+- <strong>Semantic</strong>: Clear that this is a choice
+- <strong>Predictable</strong>: Single column layout</p>
+<p><strong>When to use:</strong>
+- 3-6 clearly different options
+- Dropdown is hidden by default (saves space)
+- Options have natural hierarchy or ordering</p>
+<h4 id="alternative-stradio-for-obvious-choices">🟡 <strong>ALTERNATIVE: <code>st.radio()</code> for obvious choices</strong></h4>
+<pre><code class="language-python">internet_service = st.radio(
+    &quot;Internet Service Type&quot;,
+    options=[&quot;DSL&quot;, &quot;Fiber Optic&quot;, &quot;None&quot;],
+    horizontal=True
+)
+</code></pre>
+<p><strong>Advantages:</strong>
+- All options visible without clicking
+- Cannot miss an option
+- Clear at-a-glance what's available</p>
+<p><strong>Disadvantages:</strong>
+- Takes more space (not all options fit horizontally on mobile)
+- Radio buttons feel dated in modern Streamlit
+- Better reserved for important decisions</p>
+<h4 id="avoid-for-churn-dashboards-stmultiselect-for-single-choice">❌ <strong>AVOID for churn dashboards: <code>st.multiselect()</code> for single choice</strong></h4>
+<pre><code class="language-python"># DON'T DO THIS
+services = st.multiselect(&quot;Select services&quot;, options=[...])
+</code></pre>
+<p><strong>Why avoid:</strong>
+- Confuses users (they expect to select multiple)
+- Adds complexity for single-choice scenarios
+- Takes up space</p>
+<hr />
+<h2 id="2-form-patterns-individual-vs-grouped-inputs">2. Form Patterns: Individual vs. Grouped Inputs</h2>
+<h3 id="recommended-stform-for-customer-data-entry">✅ <strong>RECOMMENDED: <code>st.form()</code> for customer data entry</strong></h3>
+<pre><code class="language-python">with st.form(&quot;customer_input_form&quot;):
+    st.subheader(&quot;📋 Customer Information&quot;)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        tenure = st.slider(&quot;Tenure (months)&quot;, 0, 72, 24)
+        monthly = st.number_input(&quot;Monthly Charges ($)&quot;, 0.0, 120.0, 50.0)
+
+    with col2:
+        contract = st.selectbox(&quot;Contract Type&quot;, 
+            [&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;])
+        internet = st.selectbox(&quot;Internet Service&quot;, 
+            [&quot;DSL&quot;, &quot;Fiber Optic&quot;, &quot;No&quot;])
+
+    services_header = st.subheader(&quot;📱 Services&quot;)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        tech_support = st.toggle(&quot;Tech Support&quot;, value=False)
+    with col2:
+        online_security = st.toggle(&quot;Online Security&quot;, value=False)
+    with col3:
+        backup_service = st.toggle(&quot;Backup Service&quot;, value=False)
+
+    submitted = st.form_submit_button(&quot;🔮 Predict Churn Risk&quot;)
+
+if submitted:
+    # Make single API call with all data
+    prediction = fetch_prediction({
+        &quot;tenure&quot;: tenure,
+        &quot;monthly&quot;: monthly,
+        &quot;contract&quot;: contract,
+        &quot;internet&quot;: internet,
+        &quot;tech_support&quot;: tech_support,
+        &quot;online_security&quot;: online_security,
+        &quot;backup_service&quot;: backup_service
+    })
+</code></pre>
+<p><strong>Advantages:</strong>
+- <strong>Single API call</strong>: Reduces latency and server load
+- <strong>Atomic transactions</strong>: All-or-nothing data consistency
+- <strong>User expectation</strong>: "Submit" button signals form-like behavior
+- <strong>Performance</strong>: Streamlit re-runs only on submit, not per input change</p>
+<p><strong>Business dashboard benefits:</strong>
+- Support teams feel confident they've entered complete data
+- No premature predictions while they're still filling form
+- Protects API from excessive calls
+- Better for batch processing customer lists</p>
+<hr />
+<h3 id="alternative-reactive-inputs-no-form">🟡 <strong>ALTERNATIVE: Reactive inputs (no form)</strong></h3>
+<pre><code class="language-python"># Individual inputs without form (auto-predict on each change)
+tenure = st.slider(&quot;Tenure (months)&quot;, 0, 72, 24)
+monthly = st.number_input(&quot;Monthly Charges ($)&quot;, 0.0, 120.0, 50.0)
+tech_support = st.toggle(&quot;Tech Support&quot;, value=False)
+
+# Prediction happens immediately on any change
+prediction = fetch_prediction({...})
+</code></pre>
+<p><strong>When to use:</strong>
+- Exploratory dashboards where "what-if" is the goal
+- Lightweight predictions with fast API response
+- Single customer analysis (not batch processing)</p>
+<p><strong>Disadvantages for business use:</strong>
+- Multiple API calls per user interaction
+- Can feel "laggy" with slow API
+- Higher server load
+- Users feel pressured by real-time feedback</p>
+<hr />
+<h2 id="3-recommended-component-mapping-for-telco-churn-data">3. Recommended Component Mapping for Telco Churn Data</h2>
+<h3 id="customer-demographics">Customer Demographics</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Widget</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tenure</td>
+<td>Continuous (0-72 mo)</td>
+<td><code>st.slider()</code></td>
+<td>Bounded range, natural max is 72mo</td>
+</tr>
+<tr>
+<td>Monthly Charges</td>
+<td>Continuous ($)</td>
+<td><code>st.slider()</code></td>
+<td>Range-based; most churn patterns fit $18-120</td>
+</tr>
+<tr>
+<td>Total Charges</td>
+<td>Continuous ($)</td>
+<td>Calculated (tenure × monthly)</td>
+<td>Derived, show only</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>Continuous (18-80)</td>
+<td><code>st.slider()</code></td>
+<td>If available; clear age range context</td>
+</tr>
+</tbody>
+</table>
+<h3 id="service-status-booleans">Service Status (Booleans)</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Widget</th>
+<th>Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tech Support</td>
+<td><code>st.toggle()</code></td>
+<td><code>st.checkbox()</code></td>
+</tr>
+<tr>
+<td>Online Security</td>
+<td><code>st.toggle()</code></td>
+<td><code>st.checkbox()</code></td>
+</tr>
+<tr>
+<td>Phone Service</td>
+<td><code>st.toggle()</code></td>
+<td><code>st.radio(horizontal=True)</code></td>
+</tr>
+<tr>
+<td>Internet Service</td>
+<td><code>st.selectbox()</code></td>
+<td><code>st.radio()</code></td>
+</tr>
+<tr>
+<td>Backup Service</td>
+<td><code>st.toggle()</code></td>
+<td>Grouped checkbox</td>
+</tr>
+</tbody>
+</table>
+<h3 id="contract-billing">Contract &amp; Billing</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Type</th>
+<th>Widget</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Contract Type</td>
+<td>Categorical</td>
+<td><code>st.selectbox()</code></td>
+</tr>
+<tr>
+<td>Internet Service</td>
+<td>Categorical</td>
+<td><code>st.selectbox()</code></td>
+</tr>
+<tr>
+<td>Payment Method</td>
+<td>Categorical</td>
+<td><code>st.selectbox()</code></td>
+</tr>
+<tr>
+<td>Paperless Billing</td>
+<td>Boolean</td>
+<td><code>st.toggle()</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-layout-patterns-for-business-dashboards">4. Layout Patterns for Business Dashboards</h2>
+<h3 id="recommended-sectioned-layout-with-clear-visual-hierarchy">✅ <strong>RECOMMENDED: Sectioned layout with clear visual hierarchy</strong></h3>
+<pre><code class="language-python">st.title(&quot;📊 Telco Churn Prediction&quot;)
+
+# Section 1: Core Demographics
+with st.container(border=True):
+    st.subheader(&quot;👤 Customer Profile&quot;)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        tenure = st.slider(&quot;Tenure&quot;, 0, 72, 24)
+    with col2:
+        monthly = st.slider(&quot;Monthly Charges ($)&quot;, 18, 120, 50)
+    with col3:
+        total_charges = tenure * monthly
+        st.metric(&quot;Total Charges&quot;, f&quot;${total_charges:.2f}&quot;)
+
+# Section 2: Services
+with st.container(border=True):
+    st.subheader(&quot;📱 Subscribed Services&quot;)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        tech_support = st.toggle(&quot;Tech Support&quot;)
+    with col2:
+        online_security = st.toggle(&quot;Online Security&quot;)
+    with col3:
+        phone = st.toggle(&quot;Phone Service&quot;)
+
+# Section 3: Contract Details
+with st.container(border=True):
+    st.subheader(&quot;📋 Account Details&quot;)
+    col1, col2 = st.columns(2)
+    with col1:
+        contract = st.selectbox(&quot;Contract Type&quot;, 
+            [&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;])
+    with col2:
+        internet = st.selectbox(&quot;Internet Service&quot;, 
+            [&quot;DSL&quot;, &quot;Fiber Optic&quot;, &quot;No&quot;])
+
+# Prediction Section
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    if st.button(&quot;🔮 Predict Churn Risk&quot;, use_container_width=True):
+        prediction = fetch_prediction({...})
+        # Display results
+</code></pre>
+<p><strong>Why this works:</strong>
+- Visual hierarchy reduces cognitive load
+- Containers group related inputs
+- Emoji + text provides semantic meaning
+- Call-to-action button is prominent and centered</p>
+<hr />
+<h2 id="5-input-validation-error-handling">5. Input Validation &amp; Error Handling</h2>
+<h3 id="recommended-validate-in-form-before-prediction">✅ <strong>RECOMMENDED: Validate in form before prediction</strong></h3>
+<pre><code class="language-python">with st.form(&quot;prediction_form&quot;):
+    tenure = st.slider(&quot;Tenure (months)&quot;, 0, 72)
+    monthly = st.number_input(&quot;Monthly ($)&quot;, 0.0, 150.0)
+    contract = st.selectbox(&quot;Contract&quot;, [&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;])
+
+    submitted = st.form_submit_button(&quot;Predict&quot;)
+
+if submitted:
+    # Client-side validation
+    if tenure &lt; 0 or monthly &lt; 0:
+        st.error(&quot;❌ Invalid input values&quot;)
+    elif tenure == 0 and monthly == 0:
+        st.warning(&quot;⚠️ New customer with no charges - unusual but valid&quot;)
+    else:
+        try:
+            prediction = fetch_prediction({
+                &quot;tenure&quot;: tenure,
+                &quot;monthly&quot;: monthly,
+                &quot;contract&quot;: contract
+            })
+            st.success(f&quot;✅ Churn probability: {prediction:.1%}&quot;)
+        except requests.RequestException as e:
+            st.error(f&quot;API Error: {str(e)}&quot;)
+</code></pre>
+<p><strong>Best practices:</strong>
+- Sliders/selectboxes eliminate most invalid input automatically
+- Form submission validates before API call
+- Clear error messages guide users
+- Unexpected inputs (like new customers with $0) get warnings, not errors</p>
+<hr />
+<h2 id="6-mobile-accessibility-considerations">6. Mobile &amp; Accessibility Considerations</h2>
+<h3 id="optimize-for-support-team-tablets">✅ <strong>Optimize for support team tablets</strong></h3>
+<pre><code class="language-python"># Use responsive columns
+col1, col2 = st.columns([1, 1])  # Equal width
+
+# Avoid horizontal radio with &gt;3 options
+internet = st.selectbox(&quot;Internet&quot;, [&quot;DSL&quot;, &quot;Fiber&quot;, &quot;No&quot;, &quot;Satellite&quot;])
+
+# Use large touch targets
+tech_support = st.toggle(&quot;Tech Support&quot;)  # Larger than checkbox
+
+# Add help text for all inputs
+tenure = st.slider(&quot;Tenure (months)&quot;, help=&quot;How long customer has been with us&quot;)
+
+# Use horizontal=True for max 3-4 options
+gender = st.radio(&quot;Gender&quot;, [&quot;Male&quot;, &quot;Female&quot;], horizontal=True)
+
+# Test on mobile before deployment
+st.write(&quot;👉 *Designed for tablet &amp; desktop*&quot;)
+</code></pre>
+<hr />
+<h2 id="7-performance-optimization">7. Performance Optimization</h2>
+<h3 id="use-stcache_data-for-static-options">✅ <strong>Use <code>@st.cache_data</code> for static options</strong></h3>
+<pre><code class="language-python">@st.cache_data
+def get_contract_options():
+    return [&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;]
+
+contract = st.selectbox(&quot;Contract Type&quot;, get_contract_options())
+</code></pre>
+<h3 id="debounce-number-inputs-with-forms">✅ <strong>Debounce number inputs with forms</strong></h3>
+<pre><code class="language-python">with st.form(&quot;input_form&quot;):
+    monthly = st.number_input(&quot;Monthly Charges&quot;, step=0.01)
+    if st.form_submit_button(&quot;Calculate&quot;):
+        # Single API call, not per keystroke
+        result = predict(monthly)
+</code></pre>
+<hr />
+<h2 id="8-recommended-implementation-for-your-dashboard">8. Recommended Implementation for Your Dashboard</h2>
+<h3 id="current-issues">Current Issues:</h3>
+<ol>
+<li>❌ Tenure as <code>selectbox</code> is poor UX (requires scrolling to find value)</li>
+<li>✅ Monthly charges as <code>number_input</code> is appropriate</li>
+<li>✅ Tech support as <code>checkbox</code> works but toggle would be better</li>
+<li>❌ Missing form - API is called during re-render</li>
+</ol>
+<h3 id="improved-implementation">Improved Implementation:</h3>
+<pre><code class="language-python">import streamlit as st
+import requests
+
+st.set_page_config(page_title=&quot;Telco Churn Predictor&quot;, page_icon=&quot;📊&quot;, layout=&quot;wide&quot;)
+
+st.title(&quot;📊 Telco Churn Prediction Dashboard&quot;)
+st.write(&quot;Predict customer churn risk based on their profile and services.&quot;)
+
+st.divider()
+
+# Form groups inputs and prevents excessive API calls
+with st.form(&quot;churn_prediction_form&quot;):
+    st.subheader(&quot;📋 Customer Information&quot;)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        tenure = st.slider(
+            &quot;Tenure (months)&quot;,
+            min_value=0,
+            max_value=72,
+            value=24,
+            step=1,
+            help=&quot;How long the customer has been with company (0-72 months)&quot;
+        )
+
+    with col2:
+        monthly = st.slider(
+            &quot;Monthly Charges ($)&quot;,
+            min_value=18.0,
+            max_value=120.0,
+            value=50.0,
+            step=1.0,
+            help=&quot;Monthly service charges ($18-$120 typical range)&quot;
+        )
+
+    with col3:
+        # Calculate and display total charges
+        total_charges = tenure * monthly
+        st.metric(&quot;Total Charges&quot;, f&quot;${total_charges:,.0f}&quot;)
+
+    # Services section
+    st.subheader(&quot;📱 Subscribed Services&quot;)
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        tech_support = st.toggle(
+            &quot;Tech Support&quot;,
+            value=False,
+            help=&quot;Customer has tech support subscription&quot;
+        )
+
+    with col2:
+        online_security = st.toggle(
+            &quot;Online Security&quot;,
+            value=False,
+            help=&quot;Customer has online security subscription&quot;
+        )
+
+    with col3:
+        phone_service = st.toggle(
+            &quot;Phone Service&quot;,
+            value=False,
+            help=&quot;Customer has phone service&quot;
+        )
+
+    with col4:
+        backup_service = st.toggle(
+            &quot;Backup Service&quot;,
+            value=False,
+            help=&quot;Customer has backup service&quot;
+        )
+
+    # Contract section
+    st.subheader(&quot;📋 Account Details&quot;)
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        contract = st.selectbox(
+            &quot;Contract Type&quot;,
+            [&quot;Month-to-month&quot;, &quot;One year&quot;, &quot;Two year&quot;],
+            help=&quot;Duration of customer contract&quot;
+        )
+
+    with col2:
+        internet = st.selectbox(
+            &quot;Internet Service&quot;,
+            [&quot;DSL&quot;, &quot;Fiber Optic&quot;, &quot;No&quot;],
+            help=&quot;Type of internet service&quot;
+        )
+
+    with col3:
+        payment_method = st.selectbox(
+            &quot;Payment Method&quot;,
+            [&quot;Electronic check&quot;, &quot;Mailed check&quot;, &quot;Bank transfer&quot;, &quot;Credit card&quot;],
+            help=&quot;How customer pays their bill&quot;
+        )
+
+    # Submit button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        submitted = st.form_submit_button(
+            &quot;🔮 Predict Churn Risk&quot;,
+            use_container_width=True,
+            type=&quot;primary&quot;
+        )
+
+# Only process prediction after form submission
+if submitted:
+    payload = {
+        &quot;tenure&quot;: float(tenure),
+        &quot;monthly&quot;: float(monthly),
+        &quot;techsupport&quot;: float(tech_support),
+        &quot;onlinesecurity&quot;: float(online_security),
+        &quot;phoneservice&quot;: float(phone_service),
+        &quot;backupservice&quot;: float(backup_service),
+        &quot;contract&quot;: contract,
+        &quot;internet&quot;: internet,
+        &quot;payment_method&quot;: payment_method,
+    }
+
+    try:
+        response = requests.post(
+            &quot;http://127.0.0.1:8000/predict&quot;,
+            json=payload,
+            timeout=5
+        )
+        response.raise_for_status()
+        data = response.json()
+        prediction = data.get(&quot;prediction&quot;, 0)
+        churn_percentage = prediction * 100
+
+        st.divider()
+        st.subheader(&quot;🎯 Prediction Results&quot;)
+
+        # Risk level determination
+        if prediction &lt; 0.3:
+            color = &quot;green&quot;
+            risk_level = &quot;Low Risk&quot;
+        elif prediction &lt; 0.6:
+            color = &quot;orange&quot;
+            risk_level = &quot;Medium Risk&quot;
+        else:
+            color = &quot;red&quot;
+            risk_level = &quot;High Risk&quot;
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric(&quot;Churn Probability&quot;, f&quot;{churn_percentage:.1f}%&quot;)
+
+        with col2:
+            st.metric(&quot;Risk Level&quot;, risk_level)
+
+        with col3:
+            st.metric(&quot;Tenure (months)&quot;, int(tenure))
+
+        # Progress bar
+        st.progress(
+            min(prediction, 1.0),
+            text=f&quot;Churn Risk: {churn_percentage:.1f}%&quot;
+        )
+
+        # Insights
+        st.divider()
+        st.subheader(&quot;💡 Insights &amp; Recommendations&quot;)
+
+        if prediction &lt; 0.3:
+            st.success(
+                f&quot;✅ **Low Churn Risk** ({churn_percentage:.1f}%)\n\n&quot;
+                f&quot;This customer appears satisfied. Consider offering loyalty programs &quot;
+                f&quot;to maintain retention and potentially upsell premium services.&quot;
+            )
+        elif prediction &lt; 0.6:
+            st.warning(
+                f&quot;⚠️ **Medium Churn Risk** ({churn_percentage:.1f}%)\n\n&quot;
+                f&quot;Review their account and consider offering service upgrades, discounts, &quot;
+                f&quot;or improved support to reduce churn likelihood.&quot;
+            )
+        else:
+            st.error(
+                f&quot;🚨 **High Churn Risk** ({churn_percentage:.1f}%)\n\n&quot;
+                f&quot;Immediate intervention recommended! Contact customer to understand concerns &quot;
+                f&quot;and offer retention incentives.&quot;
+            )
+
+        # Detailed information
+        with st.expander(&quot;📊 Detailed Information&quot;):
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.write(&quot;**Input Parameters:**&quot;)
+                st.write(f&quot;- Tenure: {tenure} months&quot;)
+                st.write(f&quot;- Monthly Charges: ${monthly:.2f}&quot;)
+                st.write(f&quot;- Total Charges: ${total_charges:,.2f}&quot;)
+                st.write(f&quot;- Tech Support: {'✅ Yes' if tech_support else '❌ No'}&quot;)
+                st.write(f&quot;- Online Security: {'✅ Yes' if online_security else '❌ No'}&quot;)
+                st.write(f&quot;- Phone Service: {'✅ Yes' if phone_service else '❌ No'}&quot;)
+                st.write(f&quot;- Backup Service: {'✅ Yes' if backup_service else '❌ No'}&quot;)
+                st.write(f&quot;- Contract Type: {contract}&quot;)
+                st.write(f&quot;- Internet Service: {internet}&quot;)
+                st.write(f&quot;- Payment Method: {payment_method}&quot;)
+
+            with col2:
+                st.write(&quot;**Model Output:**&quot;)
+                st.json(data)
+
+    except requests.RequestException as e:
+        st.error(f&quot;❌ Error calling API: {e}&quot;)
+        st.info(&quot;Make sure the API server is running on http://127.0.0.1:8000&quot;)
+    except Exception as e:
+        st.error(f&quot;❌ Unexpected error: {e}&quot;)
+</code></pre>
+<hr />
+<h2 id="9-summary-table-component-recommendations">9. Summary Table: Component Recommendations</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Widget</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Continuous, bounded (tenure, age)</strong></td>
+<td><code>st.slider()</code></td>
+<td>Visual range context, prevents outliers</td>
+</tr>
+<tr>
+<td><strong>Precise decimal (billing)</strong></td>
+<td><code>st.slider()</code> with step</td>
+<td>Slider better than number_input for business</td>
+</tr>
+<tr>
+<td><strong>Boolean, single</strong></td>
+<td><code>st.toggle()</code></td>
+<td>Modern, clear ON/OFF state</td>
+</tr>
+<tr>
+<td><strong>Boolean, multiple related</strong></td>
+<td><code>st.toggle()</code> × N</td>
+<td>Group in columns with container border</td>
+</tr>
+<tr>
+<td><strong>Categorical, 3-6 options</strong></td>
+<td><code>st.selectbox()</code></td>
+<td>Compact, mobile-friendly, clear choices</td>
+</tr>
+<tr>
+<td><strong>Categorical, obvious choice</strong></td>
+<td><code>st.radio()</code> with horizontal=True</td>
+<td>Only if ≤3 options and always visible matters</td>
+</tr>
+<tr>
+<td><strong>Data entry workflow</strong></td>
+<td><code>st.form()</code></td>
+<td>Single submit, fewer API calls, better UX</td>
+</tr>
+<tr>
+<td><strong>Exploratory analysis</strong></td>
+<td>Individual inputs</td>
+<td>Real-time feedback for what-if scenarios</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-key-takeaways-for-your-dashboard">10. Key Takeaways for Your Dashboard</h2>
+<p>✅ <strong>DO:</strong>
+- Use <code>st.slider()</code> for tenure (bounded, intuitive)
+- Use <code>st.toggle()</code> for service booleans (modern, clear)
+- Use <code>st.form()</code> to batch inputs (one API call, atomic)
+- Add help text to all inputs (context for support teams)
+- Use <code>st.container(border=True)</code> to group related inputs
+- Test on tablet (your users' primary device)</p>
+<p>❌ <strong>DON'T:</strong>
+- Use <code>st.selectbox()</code> for tenure (users have to scroll)
+- Mix <code>st.checkbox()</code> and <code>st.toggle()</code> (inconsistent)
+- Process inputs outside forms (causes excessive API calls)
+- Use numbers without units ($ for money, months for time)
+- Forget accessibility (tooltips, clear labels, large touch targets)</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
