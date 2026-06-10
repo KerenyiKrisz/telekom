@@ -36,5 +36,3 @@ Python, scikit-learn, pandas, Marimo, pytest, GitHub Actions, Azure Functions, u
 - handle class imbalance and check for leakage
 
 ---
-
-Started as coursework at ESMT Berlin, cleaned up and extended here.
