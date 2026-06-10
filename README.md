@@ -10,9 +10,9 @@ I used logistic regression rather than something fancier, mostly because it's in
 
 ## Results
 
-[Drop in your actual numbers, e.g. "Accuracy 80%, recall 73%."]
+Drop in your actual numbers, e.g. "Accuracy 80%, recall 73%."
 
-[One line on what stood out, e.g. "Customers on month-to-month contracts with short tenure were the clearest churn signal."]
+One line on what stood out, e.g. "Customers on month-to-month contracts with short tenure were the clearest churn signal."
 
 Recall is the number I cared about most here, since missing someone who's about to leave is the costly mistake.
 
